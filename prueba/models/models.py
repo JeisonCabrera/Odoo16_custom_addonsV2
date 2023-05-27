@@ -5,7 +5,8 @@ class prueba(models.Model):
     _inherit = 'product.template'
 
     x_value = fields.Integer()
-    
+
+#comentarios    
 # class prueba(models.Model):
 #     _name = 'prueba.prueba'
 #     _description = 'prueba.prueba'
