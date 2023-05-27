@@ -1,0 +1,80 @@
+<odoo>
+  <data>
+    <record id="view_product_template_form_inherit" model="ir.ui.view">
+      <field name="name">custom.product.template.form</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <!-- Realiza las personalizaciones deseadas aquí -->
+        <data>
+          <xpath expr="//form[@name='Product Template']/sheet[@name='product_form']/notebook[1]/page[@name='general_information']/group[1]" position="after">
+            <group name="studio_group_Vqbr1">
+              <group name="studio_group_Vqbr1_left" string="Grupo 1" >
+                <field name="x_prueba"/>
+              </group>
+              <group name="studio_group_Vqbr1_right" string="Grupo 2NN" >
+                <field name="x_value" string="Numero entero"/>
+              </group>
+            </group>
+          </xpath>
+        </data>
+      </field>
+    </record>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="prueba.list">
+      <field name="name">prueba list</field>
+      <field name="model">prueba.prueba</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="prueba.action_window">
+      <field name="name">prueba window</field>
+      <field name="res_model">prueba.prueba</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="prueba.action_server">
+      <field name="name">prueba server</field>
+      <field name="model_id" ref="model_prueba_prueba"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="prueba" id="prueba.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="prueba.menu_1" parent="prueba.menu_root"/>
+    <menuitem name="Menu 2" id="prueba.menu_2" parent="prueba.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="prueba.menu_1_list" parent="prueba.menu_1"
+              action="prueba.action_window"/>
+    <menuitem name="Server to list" id="prueba" parent="prueba.menu_2"
+              action="prueba.action_server"/>
+-->
+  </data>
+</odoo>

@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="compras_yeapdata.list">
+      <field name="name">compras_yeapdata list</field>
+      <field name="model">compras_yeapdata.compras_yeapdata</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="compras_yeapdata.action_window">
+      <field name="name">compras_yeapdata window</field>
+      <field name="res_model">compras_yeapdata.compras_yeapdata</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="compras_yeapdata.action_server">
+      <field name="name">compras_yeapdata server</field>
+      <field name="model_id" ref="model_compras_yeapdata_compras_yeapdata"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="compras_yeapdata" id="compras_yeapdata.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="compras_yeapdata.menu_1" parent="compras_yeapdata.menu_root"/>
+    <menuitem name="Menu 2" id="compras_yeapdata.menu_2" parent="compras_yeapdata.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="compras_yeapdata.menu_1_list" parent="compras_yeapdata.menu_1"
+              action="compras_yeapdata.action_window"/>
+    <menuitem name="Server to list" id="compras_yeapdata" parent="compras_yeapdata.menu_2"
+              action="compras_yeapdata.action_server"/>
+-->
+  </data>
+</odoo>
