@@ -5,13 +5,6 @@ class prueba(models.Model):
     _inherit = 'product.template'
 
     x_value = fields.Integer()
-
-class prueba_technical(models.Model):
-    _name = 'prueba.technical'
-    _description = 'prueba.technical'
-
-    name = fields.Char()
-    value = fields.Integer()
     
 # class prueba(models.Model):
 #     _name = 'prueba.prueba'
