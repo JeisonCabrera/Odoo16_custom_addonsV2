@@ -14,7 +14,30 @@
               </group>
               <group name="studio_group_Vqbr1_right" string="Grupo 2NN" >
                 <field name="x_value" string="Numero entero"/>
+                <!--
+                <field name="x_centro_costos_onetime"
+                  widget="one2many"
+                  mode="tree">
+                  <tree editable="bottom">
+                    <field name="x_name"/>
+                    <field name="x_centro_costos" editable="bottom" widget="many2one"/>
+                    <field name="x_proces" editable="bottom" widget="many2one"/>
+                    <field name="x_valor" sum="Sum of Valor"/>
+                  </tree>
+                </field>
+                -->
               </group>
+            </group>
+            <group name="name_costos" string="string_costos">
+              <field name="x_centro_costos_onetime"
+                mode="tree">
+                <tree editable="bottom">
+                  <field name="x_name"/>
+                  <field name="x_centro_costos" editable="bottom" widget="many2one"/>
+                  <field name="x_proces" editable="bottom" widget="many2one"/>
+                  <field name="x_valor" sum="Sum of Valor"/>
+                </tree>
+              </field>
             </group>
           </xpath>
         </data>
