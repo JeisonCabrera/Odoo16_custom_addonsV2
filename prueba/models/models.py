@@ -1,39 +1,23 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
 
-class x_prueba(models.Model):
-    _inherit = 'product.template'
+class x_prueba(models.Model): 
+    _inherit = 'product.template' #Modelo puchase.order
 
     x_value = fields.Integer() 
-    x_centro_costos_onetime = fields.One2many('centro.costos.onetime', 'x_clave', string='Centro de costos One Time')
+    x_centro_costos_onetime_ids = fields.One2many('centro.costos.onetime', 'x_clave_id', string='Centro de costos One Time') #Campo orden_line
     
-
-class x_centro_costos_onetime(models.Model):
-    _name = 'centro.costos.onetime'
+class x_centro_costos_onetime(models.Model): 
+    _name = 'centro.costos.onetime'                 #Modelo purchase.order.line
     _description = 'centro.costos.onetime'
 
-    x_clave = fields.Many2one('product.template')
-    x_name = fields.Char('Nombre')
-    x_centro_costos = fields.Many2one('centro.costos', 'Centro de costos')
-    x_proces = fields.Many2one('procesos', 'Procesos')
+    name = fields.Char('Nombre')
+    x_centro_costos_id = fields.Many2one(comodel_name='centro.costos', string='Centro de Costos')  #Campo product_id    , change_default=True, index='btree_not_null', widget='list.many2one'
+    x_proces_id = fields.Many2one('procesos', string='Procesos')
     x_valor = fields.Float('Valor')
-    
-    
-
-
-class x_centro_costos(models.Model):
-    _name = 'centro.costos'
-    _description = 'centro.costos'
-
-    x_centro = fields.Char('Centro de costos')
-
-class x_procesos(models.Model):
-    _name = 'procesos'
-    _description = 'procesos'
-    
-    x_procesos = fields.Char('Procesos')
-    
-#comentarios    
+    x_clave_id = fields.Many2one('product.template', string='ReferenceXXX') #, index=True, required=True, ondelete='cascade'
+    productxx_id = fields.Char(string='ProductXXX', related='x_centro_costos_id.name') #ya me trae el valor del centro de costo
+  
 # class prueba(models.Model):
 #     _name = 'prueba.prueba'
 #     _description = 'prueba.prueba'

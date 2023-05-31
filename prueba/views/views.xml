@@ -6,41 +6,105 @@
       <field name="inherit_id" ref="product.product_template_only_form_view"/>
       <field name="arch" type="xml">
         <!-- Realiza las personalizaciones deseadas aquí -->
-        <data>
-          <xpath expr="//form[@name='Product Template']/sheet[@name='product_form']/notebook[1]/page[@name='general_information']/group[1]" position="after">
-            <group name="studio_group_Vqbr1">
-              <group name="studio_group_Vqbr1_left" string="Grupo 1" >
-                <field name="x_prueba"/>
-              </group>
-              <group name="studio_group_Vqbr1_right" string="Grupo 2NN" >
-                <field name="x_value" string="Numero entero"/>
-                <!--
-                <field name="x_centro_costos_onetime"
-                  widget="one2many"
-                  mode="tree">
-                  <tree editable="bottom">
-                    <field name="x_name"/>
-                    <field name="x_centro_costos" editable="bottom" widget="many2one"/>
-                    <field name="x_proces" editable="bottom" widget="many2one"/>
-                    <field name="x_valor" sum="Sum of Valor"/>
-                  </tree>
-                </field>
-                -->
-              </group>
+        
+        <xpath expr="//form[@name='Product Template']/sheet[@name='product_form']/notebook[1]/page[@name='general_information']/group[1]" position="after">
+          <group name="studio_group_Vqbr1">
+            <group name="studio_group_Vqbr1_left" string="Grupo 1" >
+              <field name="x_prueba"/>
             </group>
-            <group name="name_costos" string="string_costos">
+            <group name="studio_group_Vqbr1_right" string="Grupo 2NN" >
+              <field name="x_value" string="Numero entero"/>
+              
+              <!--
               <field name="x_centro_costos_onetime"
+                widget="one2many"
                 mode="tree">
-                <tree editable="bottom">
+                <tree editable="bottom" create="true">
                   <field name="x_name"/>
-                  <field name="x_centro_costos" editable="bottom" widget="many2one"/>
+                  <field name="x_centro_costos_id" widget="list.many2one"/>
                   <field name="x_proces" editable="bottom" widget="many2one"/>
                   <field name="x_valor" sum="Sum of Valor"/>
                 </tree>
               </field>
+              -->
             </group>
-          </xpath>
-        </data>
+          </group>
+          <group name="name_costos" string="string_costos">
+            <field name="x_centro_costos_onetime_ids"
+                  widget="one2many"
+                  mode="tree">
+            </field>
+          </group>
+        </xpath>
+        
+      </field>
+    </record>
+
+    <!--Vistas para Centro de costos ONE TIME-->
+    <record id="custom_product_template_cosotosonetime" model="ir.ui.view">
+      <field name="name">custom.product.template.cosotosonetime</field>
+      <field name="model">centro.costos.onetime</field>
+      <field name="arch" type="xml">
+        <tree string="Centro Costos One Time" editable="bottom">
+          <field name="name"/>
+          <field name="x_centro_costos_id"/>
+          <field name="x_proces_id"/>
+          <field name="x_valor" sum="Sum of Valor"/>
+          <field name="productxx_id"/>
+          <field name="x_clave_id" invisible="1"/>
+        </tree>
+      </field>
+    </record>
+    <record id="custom_product_template_cosotosonetime_form" model="ir.ui.view">
+      <field name="name">custom.product.template.cosotosonetime.form</field>
+      <field name="model">centro.costos.onetime</field>
+      <field name="priority" eval="20"/>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group name="centro_costos_onetime" string="Centro Costos One Timex">
+              <field name="name"/>
+              <field name="x_centro_costos_id"/>
+              <field name="x_proces_id"/>
+              <field name="x_valor"/>
+              <field name="productxx_id"/>
+              <field name="x_clave_id" invisible="1"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!--Vistas para Centro de costos-->
+    <record id="centro_costos_view_tree" model="ir.ui.view">
+      <field name="name">centro.costos.view.tree</field>
+      <field name="model">centro.costos</field>
+      <field name="arch" type="xml">
+        <tree string="arbol centor de costo">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+    <record id="centro_costos_view_form" model="ir.ui.view">
+      <field name="name">centro.costos.view.form</field>
+      <field name="model">centro.costos</field>
+      <field name="arch" type="xml">
+        <form string="form centro de costo">
+          <sheet>
+            <group name="centro_costos" string="Centro Costos Yeap">
+              <field name="name" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="centro_costos_view_search" model="ir.ui.view">
+      <field name="name">centro.costos.view.search</field>
+      <field name="model">centro.costos</field>
+      <field name="arch" type="xml">
+        <search string="buscar centro de costo">
+          <field name="name" />
+        </search>
       </field>
     </record>
     <!-- explicit list view definition -->
