@@ -1,60 +1,153 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="compras_yeapdata.list">
-      <field name="name">compras_yeapdata list</field>
-      <field name="model">compras_yeapdata.compras_yeapdata</field>
+    <record model="ir.ui.view" id="compras_yeapdata_form">
+      <field name="name">compras.yeapdata.form</field>
+      <field name="model">purchase.order</field>
+      <field name="inherit_id" ref="purchase.purchase_order_form"/>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
+
+        <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+          <group name="contacto_relacionado">
+            <field name="contacto_proveedor_id" string="Contacto"/>
+          </group>
+        </xpath>
+
+        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+          <page name="informacion_general" string="Información General">
+            <group name="informacion_general_grupo" string="Información General">
+              <field name="canal" />
+              <field name="linea_producto" />
+              <field name="producto" />
+              <field name="descripcion_producto" />
+              <field name="qrn_tid_cotizacion" />
+              <field name="ship_to_ipa" />
+              <field name="fk" />
+              <field name="orden_compra_cliente" />
+              <field name="razon_social_cliente_id" />
+              <field name="nit" />
+              <field name="contacto_cliente_id" />
+              <field name="telefono" />
+              <field name="direccion_envio" />
+              <field name="vertical_mercado" />
+            </group>
+          </page>
+          <page name="valores_odservaciones" string="Valores y Observaciones">
+            <group name="valores" string="Valores">
+              <field name="tipo_orden"/>
+              <field name="nombre_proyecto" />
+              <field name="fecha_finalizacion_contrato" />
+            </group>
+            <group name="valores_onetime" string="Valores One Time">
+              <field name="valore_onetime_ids"
+                widget="section_and_note_one2many"
+                mode="tree,form">
+                <tree string="Valores One Time" editable="bottom">
+                  <field name="name" />
+                  <field name="centro_costos_id" />
+                  <field name="procesos_id" />
+                  <field name="valor" sum="Sum of Valor"/>
+                </tree>
+                <form>
+                  <field name="name" />
+                  <field name="centro_costos_id" />
+                  <field name="procesos_id" />
+                  <field name="valor" />
+                </form>
+              </field>
+              <field name="centro_cotos_onetime"/>
+              <field name="valor_oc_onetime" />
+              <field name="moneda_onetime_id" />
+              <field name="trm_onetime" />
+              <field name="valor_oc_pesos_onetime" />
+            </group>
+            <group name="valores_recurrentes" string="Valores Recurrentes">
+              <field name="valore_recurrentes_ids"
+                widget="section_and_note_one2many"
+                mode="tree,form">
+                <tree string="Valores Recurrentes" editable="bottom">
+                  <field name="name" />
+                  <field name="centro_costos_id" />
+                  <field name="procesos_id" />
+                  <field name="valor" sum="Sum of Valor"/>
+                </tree>
+                <form>
+                  <field name="name" />
+                  <field name="centro_costos_id" />
+                  <field name="procesos_id" />
+                  <field name="valor" />
+                </form>
+              </field>
+              <field name="centro_cotos_recurrente"/>
+              <field name="valor_oc_recurrente" />
+              <field name="moneda_recurrente_id" />
+              <field name="trm_recurrente" />
+              <field name="valor_oc_pesos_recurrente" />
+              <field name="tiempo_meses_recurrente" />
+              <field name="valor_cuota_recurrente" />
+              <field name="valor_cuota_pesos_recurrente" />
+            </group>
+            <group name="resumen_valores" string="Resumen de valores">
+              <field name="centro_cotos_onetime" readonly="1"/>
+              <field name="centro_cotos_recurrente" readonly="1"/>
+              <field name="valor_oc_pesos_onetime" string="VALOR TOTAL OC EN PESOS ONE TIME"/>
+              <field name="valor_oc_pesos_recurrente" string="VALOR TOTAL OC EN PESOS RECURRENTE"/>
+              <field name="valor_total_oc_pesos" />
+              <field name="tiempo_meses_recurrente" readonly="1"/>
+              <field name="valor_cuota_pesos_recurrente" />
+              <field name="date_planned" string="FECHA ESTIMADA DE ENTREGA" widget="date" readonly="1"/>
+              <field name="fecha_finalizacion_contrato" readonly="1"/>
+            </group>
+            <group name="observaciones" string="OBSERVACIONES">
+              <field name="observaciones" />
+            </group>
+            <group>
+              <group>
+                <field name="solicitado_por_id" />
+                <field name="autorizo_id" />
+              </group>
+              <group>
+                <field name="elaborado_por" />
+              </group>
+            </group>
+          </page>
+          <page name="detalle" string="Detalles de Orden de Compra">
+            <group name="detalle_oc" string="DETALLE ORDEN DE COMPRA">
+                <field name="detalle_oc_ids"
+                  widget="section_and_note_one2many"
+                  mode="tree,form">
+                  <tree editable="bottom">
+                    <field name="name" />
+                    <field name="descripcion" />
+                    <field name="qty" />
+                    <field name="precio_unitario" sum="Total"/>
+                  </tree>
+                  <form>
+                    <field name="name" />
+                    <field name="descripcion" />
+                    <field name="qty" />
+                    <field name="precio_unitario" />
+                  </form>
+                </field>
+                <field name="imagen" widget="image"/>
+              </group>
+          </page>
+          <page name="tratamiento_datos" string="Tratamiento de Datos">
+            <group name="tratamiendo" string="Tratamiento de datos">
+              <field name="tratamiento_datos_id"
+                widget="many2one"
+                mode="form">
+                <form>
+                  <group name="tratamiento_datos_yeap" string="Tratamiento de datos">
+                    <field name="name"/>
+                    <field name="condiciones_oc"/>
+                  </group>
+                </form>
+              </field>
+            </group>
+          </page>
+        </xpath>
       </field>
     </record>
--->
-
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="compras_yeapdata.action_window">
-      <field name="name">compras_yeapdata window</field>
-      <field name="res_model">compras_yeapdata.compras_yeapdata</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="compras_yeapdata.action_server">
-      <field name="name">compras_yeapdata server</field>
-      <field name="model_id" ref="model_compras_yeapdata_compras_yeapdata"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
-
-    <!-- Top menu item -->
-<!--
-    <menuitem name="compras_yeapdata" id="compras_yeapdata.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="compras_yeapdata.menu_1" parent="compras_yeapdata.menu_root"/>
-    <menuitem name="Menu 2" id="compras_yeapdata.menu_2" parent="compras_yeapdata.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="compras_yeapdata.menu_1_list" parent="compras_yeapdata.menu_1"
-              action="compras_yeapdata.action_window"/>
-    <menuitem name="Server to list" id="compras_yeapdata" parent="compras_yeapdata.menu_2"
-              action="compras_yeapdata.action_server"/>
--->
   </data>
 </odoo>
