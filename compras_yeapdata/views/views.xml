@@ -8,8 +8,13 @@
       <field name="arch" type="xml">
 
         <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
-          <group name="contacto_relacionado">
-            <field name="contacto_proveedor_id" string="Contacto"/>
+          <group name="per">
+            <group name="contacto_relacionado" >
+              <field name="contacto_proveedor_id"/>
+            </group>
+            <group name="contacto_factura">
+              <field name="contacto_factura_id" />
+            </group>
           </group>
         </xpath>
 

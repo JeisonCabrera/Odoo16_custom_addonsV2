@@ -5,7 +5,7 @@ class compras_yeapdata(models.Model):
     _inherit = 'purchase.order'
 
     #Contacto relacionado con proveedo
-    contacto_proveedor_id = fields.Many2one('res.partner', string='Contacto', domain="[('parent_id', '=', partner_id)]")
+    contacto_proveedor_id = fields.Many2one('res.partner', string='CONTACTO', domain="[('parent_id', '=', partner_id)]")
 
     #Informacion General
 
@@ -31,10 +31,10 @@ class compras_yeapdata(models.Model):
         ('yeapdata', 'Yeapdata')
     ], string='TIPO DE ORDEN')
     nombre_proyecto = fields.Char(string='NOMBRE DEL PROYECTO')
-    fecha_finalizacion_contrato = fields.Date('FECHA DE FINALIZACIÓN DE CONTRATO')
+    fecha_finalizacion_contrato = fields.Date('FECHA DE FINALIZACIÓN DE CONTRATO', index=True, copy=False, readonly=False)
     #VALORES ONE TIME
     valore_onetime_ids = fields.One2many('valores.onetime', 'clave_id', string='VALORES ONE TIME')
-    centro_cotos_onetime = fields.Text('CENTRO DE COSTOS ONE TIME')
+    centro_cotos_onetime = fields.Text('CENTRO DE COSTOS ONE TIME', index=True, copy=False, readonly=False)
     valor_oc_onetime = fields.Float('VALOR OC')
     moneda_onetime_id = fields.Many2one('res.currency', string='MONEDA')
     trm_onetime = fields.Float(string='TRM', default='1')
@@ -47,7 +47,7 @@ class compras_yeapdata(models.Model):
     
     #VALORES RECURRENTES
     valore_recurrentes_ids = fields.One2many('valores.recurrentes', 'clave_id', string='VALORES RECURRENTES')
-    centro_cotos_recurrente = fields.Text('CENTRO DE COSTOS RECURRENTES')
+    centro_cotos_recurrente = fields.Text('CENTRO DE COSTOS RECURRENTES', index=True, copy=False, readonly=False)
     valor_oc_recurrente = fields.Float('VALOR OC')
     moneda_recurrente_id = fields.Many2one('res.currency', string='MONEDA')
     trm_recurrente = fields.Float(string='TRM', default='1')
@@ -90,6 +90,8 @@ class compras_yeapdata(models.Model):
     
     #Tratamiento de datos
     tratamiento_datos_id = fields.Many2one('tratamiento.datos', string='TRATAMIENTO DE DATOS')
+    #Direccion de factura
+    contacto_factura_id = fields.Many2one('res.partner', string='FACTURACIÓN', domain="['&', ('parent_id', '=', company_id), ('type', '=', 'invoice')]")
 
 class valores_onetime(models.Model):
     _name = 'valores.onetime'
@@ -139,4 +141,5 @@ class tratamiento_datos(models.Model):
 
     name = fields.Char('NOMBRE')
     condiciones_oc = fields.Html('CONDICIONES GENERALES DE LA ORDEN DE COMPRA')
+
     

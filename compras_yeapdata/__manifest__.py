@@ -26,10 +26,14 @@
     'data': [
         #'security/ir.model.access.csv',
         'views/views.xml',
-        'views/templates.xml',
+        'report/custom_report_oc_yeapdata.xml',
+        'report/custom_report_oc_yeapdata_view.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
+    'application': True,
+
+    'sequence': -100,
 }

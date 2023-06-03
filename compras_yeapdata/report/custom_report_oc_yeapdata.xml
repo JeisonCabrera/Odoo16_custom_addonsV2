@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_compras_yeapdata" model="ir.actions.report">
+        <field name="name">Orden de compra YEAPDATA</field>
+        <field name="model">purchase.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">compras_yeapdata.report_compras_yeapdata</field>
+        <field name="report_file">compras_yeapdata.report_compras_yeapdata</field>
+        <field name="binding_model_id" ref="model_purchase_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

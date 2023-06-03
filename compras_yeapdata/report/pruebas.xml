@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_compras_yeapdata">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h1>ORDEN DE COMPRAS PROVEEDORES</h1>
+                            <h1>Este es un reporte</h1>
+                            <p>Personalizado para YEAPDATA</p>
+                            <p><t t-esc="o.partner_id.name"/></p>
+                            <!--
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Centro de costos</th>
+                                        <th>Procesos</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.valore_onetime_ids" t-as="onetime">
+                                        <td>
+                                            <span t-field="onetime.centro_costos_id"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="onetime.procesos_id"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="onetime.valor"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            -->
+                            <!--
+                            <div class="container text-left">
+                                <div class="row justify-content-evenly">
+                                    <div class="col-5" style="width: 49%">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td style="width: 50%"><p><strong>ORDEN DE COMPRA</strong></p></td>
+                                                <td style="width: 50%"><p><t t-esc="o.name"/></p></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-1" style="width: 2%"/>
+                                    <div class="col-5" style="width: 49%">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td>FECHA ORDEN DE COMPRA</td>
+                                                <td><p><t t-esc="o.date_order"/></p></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            -->
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

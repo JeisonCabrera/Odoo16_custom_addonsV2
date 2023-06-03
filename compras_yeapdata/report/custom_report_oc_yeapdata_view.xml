@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_compras_yeapdata">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div class="oe_structure"/>
+                            <div class="row">
+                                <div class="col h2 text-center">
+                                    <h3><span>CONDICIONES GENERALES DE LA ORDEN DE COMPRA</span></h3>
+                                </div>
+                            </div>
+                            <div id="tratamiento_datos" class="row">
+                                <div class="col">
+                                    <p class="text-center"><t t-esc="o.tratamiento_datos_id.condiciones_oc"/></p>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <div class="row justify-content-evenly">
+                                    <div class="col-5" style="width: 49%">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td style="width: 50%"><strong>ORDEN DE COMPRA</strong></td>
+                                                <td style="width: 50%"><p><t t-esc="o.name"/></p></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-1" style="width: 2%"/>
+                                    <div class="col-5" style="width: 49%">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><strong>FECHA ORDEN DE COMPRA</strong></td>
+                                                <td><p><t t-esc="o.date_order"/></p></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row text-center justify-content-evenly">
+                                <div style="width: 49%">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td colspan="2"><strong>DATOS DEL COMPRADOR</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><p><t t-esc="o.company_id.name"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><p>NIT - <t t-esc="o.company_id.vat"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><p><t t-esc="o.company_id.city"/>, <t t-esc="o.company_id.street"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 30%">CONTACTO</td>
+                                            <td><p><t t-esc="o.user_id.name"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>CARGO</td>
+                                            <td><p><t t-esc="o.user_id.partner_id.function"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>TELÉFONO</td>
+                                            <td><p><t t-esc="o.user_id.phone"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORREO ELECTRONICO</td>
+                                            <td><p><t t-esc="o.user_id.email"/></p></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div style="width: 2%"/>
+                                <div style="width: 49%">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td colspan="2"><strong>DATOS DEL PROVEEDOR</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><p><t t-esc="o.partner_id.name"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><p>NIT - <t t-esc="o.partner_id.vat"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><p><t t-esc="o.partner_id.city"/>, <t t-esc="o.partner_id.street"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 30%">CONTACTO</td>
+                                            <td><p><t t-esc="o.contacto_proveedor_id.name"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>CARGO</td>
+                                            <td><p><t t-esc="o.contacto_proveedor_id.function"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>TELÉFONO</td>
+                                            <td><p><t t-esc="o.contacto_proveedor_id.phone"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>CORREO ELECTRONICO</td>
+                                            <td><p><t t-esc="o.contacto_proveedor_id.email"/></p></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="text-center">
+                                <div class="row justify-content-evenly">
+                                    <div class="col-5" style="width: 49%">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td colspan="2"><strong>DIRECCIÓN DE ENVÍO</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 30%">RAZÓN SOCIAL</td>
+                                                <td><p><t t-esc="o.company_id.name"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>NIT</td>
+                                                <td><p>NIT - <t t-esc="o.company_id.vat"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>DIRECCIÓN</td>
+                                                <td><p><span t-field="o.picking_type_id.warehouse_id.partner_id.street"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CIUDAD</td>
+                                                <td><p><t t-esc="o.company_id.city"/>, <t t-esc="o.company_id.country_id.name"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CONTACTO</td>
+                                                <td><p><span t-field="o.picking_type_id.warehouse_id.partner_id.name"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CELULAR</td>
+                                                <td><p><span t-field="o.picking_type_id.warehouse_id.partner_id.mobile"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>TELÉFONO</td>
+                                                <td><p><span t-field="o.picking_type_id.warehouse_id.partner_id.phone"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CORREO ELECTRONICO</td>
+                                                <td><p><span t-field="o.picking_type_id.warehouse_id.partner_id.email"/></p></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-1" style="width: 2%"/>
+                                    <div class="col-5" style="width: 49%">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td colspan="2"><strong>DIRECCIÓN DE FACTURACIÓN</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 30%">RAZÓN SOCIAL</td>
+                                                <td><p><t t-esc="o.company_id.name"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>NIT</td>
+                                                <td><p>NIT - <t t-esc="o.company_id.vat"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>DIRECCIÓN</td>
+                                                <td><p><t t-esc="o.contacto_factura_id.street"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CIUDAD</td>
+                                                <td><p><t t-esc="o.contacto_factura_id.city"/>, <t t-esc="o.contacto_factura_id.country_id.name"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CONTACTO</td>
+                                                <td><p><t t-esc="o.contacto_factura_id.name"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CELULAR</td>
+                                                <td><p><t t-esc="o.contacto_factura_id.mobile"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>TELÉFONO</td>
+                                                <td><p><t t-esc="o.contacto_factura_id.phone"/></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CORREO ELECTRONICO</td>
+                                                <td><p><t t-esc="o.contacto_factura_id.email"/></p></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
