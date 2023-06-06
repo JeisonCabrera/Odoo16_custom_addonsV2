@@ -93,12 +93,12 @@
               <field name="valor_cuota_pesos_recurrente" />
             </group>
             <group name="resumen_valores" string="Resumen de valores">
-              <field name="centro_cotos_onetime" readonly="1"/>
-              <field name="centro_cotos_recurrente" readonly="1"/>
+              <field name="centro_costos_ot_related" readonly="1"/>
+              <field name="centro_costos_rec_related" readonly="1"/>
               <field name="valor_oc_pesos_onetime" string="VALOR TOTAL OC EN PESOS ONE TIME"/>
               <field name="valor_oc_pesos_recurrente" string="VALOR TOTAL OC EN PESOS RECURRENTE"/>
               <field name="valor_total_oc_pesos" />
-              <field name="tiempo_meses_recurrente" readonly="1"/>
+              <field name="tiempo_related" readonly="1"/>
               <field name="valor_cuota_pesos_recurrente" />
               <field name="date_planned" string="FECHA ESTIMADA DE ENTREGA" widget="date" readonly="1"/>
               <field name="fecha_finalizacion_contrato" readonly="1"/>

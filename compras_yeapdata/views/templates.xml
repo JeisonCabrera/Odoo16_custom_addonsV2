@@ -1,24 +1,20 @@
 <odoo>
-    <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
-            </t>
-          </dl>
-        </template>
--->
-    </data>
+  <data>
+    <record model="ir.ui.view" id="contactos_yeapdata_form">
+      <field name="name">contactos.yeapdata.form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+          <group name="padre">
+            <group name="padre1">
+              <field name="vertical_mercado"/>
+            </group>
+            <group name="padre2">
+            </group>
+          </group>
+        </xpath>
+      </field>
+    </record>
+  </data>
 </odoo>

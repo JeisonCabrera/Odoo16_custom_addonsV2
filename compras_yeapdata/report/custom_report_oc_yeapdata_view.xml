@@ -4,17 +4,18 @@
         <template id="report_compras_yeapdata">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="web.external_layout">                        
+                    <t t-call="web.external_layout">
                         <div class="page">
                             <div class="oe_structure"/>
                             <div>
                                 <!-- Titulo -->
                                 <div class="row">
                                     <div class="col h2 text-center">
-                                        <h5><span>CONDICIONES GENERALES DE LA ORDEN DE COMPRA</span></h5>
+                                        <h5>
+                                            <span>CONDICIONES GENERALES DE LA ORDEN DE COMPRA</span>
+                                        </h5>
                                     </div>
                                 </div>
-
                                 <!-- Texto de tratamiento de datos -->
                                 <div id="tratamiento_datos" class="row">
                                     <div>
@@ -22,23 +23,31 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div style="margin-top: 170px; font-size: 12px">
                                 <!-- Primera fila de  orden y fecha -->
                                 <div class="row text-left justify-content-evenly">
                                     <div style="width: 49%">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered border border-2 border-dark">
                                             <tr>
-                                                <td style="width: 50%"><strong>ORDEN DE COMPRA</strong></td>
-                                                <td><t t-esc="o.name"/></td>
+                                                <td style="width: 30%; background: #D3D3D3">
+                                                    <strong>ORDEN DE COMPRA</strong>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.name"/>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
                                     <div style="width: 2%"/>
                                     <div style="width: 49%">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered border border-2 border-dark">
                                             <tr>
-                                                <td style="width: 60%"><strong>FECHA ORDEN DE COMPRA</strong></td>
-                                                <td><t t-esc="o.date_order"/></td>
+                                                <td style="width: 40%; background: #D3D3D3">
+                                                    <strong>FECHA ORDEN DE COMPRA</strong>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.date_order"/>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
@@ -47,67 +56,99 @@
                                 <!-- Tablas de DATOS DE COMPRADOR y DATOS DE PROVEEDO -->
                                 <div class="row text-center justify-content-evenly">
                                     <div style="width: 49%">
-                                        <table class="table table-bordered">
+                                        <table class="table-bordered table border border-2 border-dark">
                                             <tr>
-                                                <td colspan="2"><strong>DATOS DEL COMPRADOR</strong></td>
+                                                <td colspan="2" style="background: #E51066">
+                                                    <strong style="color: white">DATOS DEL COMPRADOR</strong>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><t t-esc="o.company_id.name"/></td>
+                                                <td colspan="2">
+                                                    <t t-esc="o.company_id.name"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2">NIT - <t t-esc="o.company_id.vat"/></td>
+                                                <td colspan="2">NIT - <t t-esc="o.company_id.vat"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><t t-esc="o.company_id.city"/>, <t t-esc="o.company_id.street"/></td>
+                                                <td colspan="2">
+                                                    <t t-esc="o.company_id.city"/>
+,                                                    <t t-esc="o.company_id.street"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 30%">CONTACTO</td>
-                                                <td><t t-esc="o.user_id.name"/></td>
+                                                <td style="width: 30%; background: #D3D3D3">CONTACTO</td>
+                                                <td>
+                                                    <t t-esc="o.user_id.name"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CARGO</td>
-                                                <td><t t-esc="o.user_id.partner_id.function"/></td>
+                                                <td style="background: #D3D3D3">CARGO</td>
+                                                <td>
+                                                    <t t-esc="o.user_id.partner_id.function"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>TELÉFONO</td>
-                                                <td><t t-esc="o.user_id.phone"/></td>
+                                                <td style="background: #D3D3D3">TELÉFONO</td>
+                                                <td>
+                                                    <t t-esc="o.user_id.phone"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CORREO ELECTRONICO</td>
-                                                <td><t t-esc="o.user_id.email"/></td>
+                                                <td style="background: #D3D3D3">CORREO ELECTRONICO</td>
+                                                <td>
+                                                    <t t-esc="o.user_id.email"/>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
                                     <div style="width: 2%"/>
                                     <div style="width: 49%">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered border border-2 border-dark">
                                             <tr>
-                                                <td colspan="2"><strong>DATOS DEL PROVEEDOR</strong></td>
+                                                <td colspan="2" style="background: #E51066">
+                                                    <strong style="color: white">DATOS DEL PROVEEDOR</strong>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><t t-esc="o.partner_id.name"/></td>
+                                                <td colspan="2">
+                                                    <t t-esc="o.partner_id.name"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2">NIT - <t t-esc="o.partner_id.vat"/></td>
+                                                <td colspan="2">NIT - <t t-esc="o.partner_id.vat"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><t t-esc="o.partner_id.city"/>, <t t-esc="o.partner_id.street"/></td>
+                                                <td colspan="2">
+                                                    <t t-esc="o.partner_id.city"/>
+,                                                    <t t-esc="o.partner_id.street"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 30%">CONTACTO</td>
-                                                <td><t t-esc="o.contacto_proveedor_id.name"/></td>
+                                                <td style="width: 30%; background: #D3D3D3">CONTACTO</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_proveedor_id.name"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CARGO</td>
-                                                <td><t t-esc="o.contacto_proveedor_id.function"/></td>
+                                                <td style="background: #D3D3D3">CARGO</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_proveedor_id.function"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>TELÉFONO</td>
-                                                <td><t t-esc="o.contacto_proveedor_id.phone"/></td>
+                                                <td style="background: #D3D3D3">TELÉFONO</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_proveedor_id.phone"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CORREO ELECTRONICO</td>
-                                                <td><t t-esc="o.contacto_proveedor_id.email"/></td>
+                                                <td style="background: #D3D3D3">CORREO ELECTRONICO</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_proveedor_id.email"/>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
@@ -116,86 +157,266 @@
                                 <!-- Tablas de DIRECCION DE ENVÍO Y DIRECCION DE FACTURACION -->
                                 <div class="row text-center justify-content-evenly">
                                     <div style="width: 49%">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered border border-2 border-dark">
                                             <tr>
-                                                <td colspan="2"><strong>DIRECCIÓN DE ENVÍO</strong></td>
+                                                <td colspan="2" style="background: #E51066">
+                                                    <strong style="color: white">DIRECCIÓN DE ENVÍO</strong>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 30%">RAZÓN SOCIAL</td>
-                                                <td><t t-esc="o.company_id.name"/></td>
+                                                <td style="width: 30%; background: #D3D3D3">RAZÓN SOCIAL</td>
+                                                <td>
+                                                    <t t-esc="o.company_id.name"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>NIT</td>
-                                                <td>NIT - <t t-esc="o.company_id.vat"/></td>
+                                                <td style="background: #D3D3D3">NIT</td>
+                                                <td>NIT - <t t-esc="o.company_id.vat"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>DIRECCIÓN</td>
-                                                <!-- <td><span t-field="o.picking_type_id.warehouse_id.partner_id.street"/></td> -->
-                                                <td><t t-esc="o.picking_type_id.warehouse_id.partner_id.street"/></td>
+                                                <td style="background: #D3D3D3">DIRECCIÓN</td>
+                                                <td>
+                                                    <t t-esc="o.picking_type_id.warehouse_id.partner_id.street"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CIUDAD</td>
-                                                <td><t t-esc="o.company_id.city"/>, <t t-esc="o.company_id.country_id.name"/></td>
+                                                <td style="background: #D3D3D3">CIUDAD</td>
+                                                <td>
+                                                    <t t-esc="o.company_id.city"/>
+,                                                    <t t-esc="o.company_id.country_id.name"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CONTACTO</td>
-                                                <!-- <td><span t-field="o.picking_type_id.warehouse_id.partner_id.name"/></td> -->
-                                                <td><t t-esc="o.picking_type_id.warehouse_id.partner_id.name"/></td>
+                                                <td style="background: #D3D3D3">CONTACTO</td>
+                                                <td>
+                                                    <t t-esc="o.picking_type_id.warehouse_id.partner_id.name"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CELULAR</td>
-                                                <!-- <td><span t-field="o.picking_type_id.warehouse_id.partner_id.mobile"/></td> -->
-                                                <td><t t-esc="o.picking_type_id.warehouse_id.partner_id.mobile"/></td>
+                                                <td style="background: #D3D3D3">CELULAR</td>
+                                                <td>
+                                                    <t t-esc="o.picking_type_id.warehouse_id.partner_id.mobile"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>TELÉFONO</td>
-                                                <!-- <td><span t-field="o.picking_type_id.warehouse_id.partner_id.phone"/></td> -->
-                                                <td><t t-esc="o.picking_type_id.warehouse_id.partner_id.phone"/></td>
+                                                <td style="background: #D3D3D3">TELÉFONO</td>
+                                                <td>
+                                                    <t t-esc="o.picking_type_id.warehouse_id.partner_id.phone"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CORREO ELECTRONICO</td>
-                                                <!-- <td><span t-field="o.picking_type_id.warehouse_id.partner_id.email"/></td> -->
-                                                <td><t t-esc="o.picking_type_id.warehouse_id.partner_id.email"/></td>
+                                                <td style="background: #D3D3D3">CORREO ELECTRONICO</td>
+                                                <td>
+                                                    <t t-esc="o.picking_type_id.warehouse_id.partner_id.email"/>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
                                     <div style="width: 2%"/>
                                     <div style="width: 49%">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered border border-2 border-dark">
                                             <tr>
-                                                <td colspan="2"><strong>DIRECCIÓN DE FACTURACIÓN</strong></td>
+                                                <td colspan="2" style="background: #E51066">
+                                                    <strong style="color: white">DIRECCIÓN DE FACTURACIÓN</strong>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 30%">RAZÓN SOCIAL</td>
-                                                <td><t t-esc="o.company_id.name"/></td>
+                                                <td style="width: 30%; background: #D3D3D3">RAZÓN SOCIAL</td>
+                                                <td>
+                                                    <t t-esc="o.company_id.name"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>NIT</td>
-                                                <td>NIT - <t t-esc="o.company_id.vat"/></td>
+                                                <td style="background: #D3D3D3">NIT</td>
+                                                <td>NIT - <t t-esc="o.company_id.vat"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>DIRECCIÓN</td>
-                                                <td><t t-esc="o.contacto_factura_id.street"/></td>
+                                                <td style="background: #D3D3D3">DIRECCIÓN</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.street"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CIUDAD</td>
-                                                <td><t t-esc="o.contacto_factura_id.city"/>, <t t-esc="o.contacto_factura_id.country_id.name"/></td>
+                                                <td style="background: #D3D3D3">CIUDAD</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.city"/>
+,                                                    <t t-esc="o.contacto_factura_id.country_id.name"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CONTACTO</td>
-                                                <td><t t-esc="o.contacto_factura_id.name"/></td>
+                                                <td style="background: #D3D3D3">CONTACTO</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.name"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CELULAR</td>
-                                                <td><t t-esc="o.contacto_factura_id.mobile"/></td>
+                                                <td style="background: #D3D3D3">CELULAR</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.mobile"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>TELÉFONO</td>
-                                                <td><t t-esc="o.contacto_factura_id.phone"/></td>
+                                                <td style="background: #D3D3D3">TELÉFONO</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.phone"/>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>CORREO ELECTRONICO</td>
-                                                <td><t t-esc="o.contacto_factura_id.email"/></td>
+                                                <td style="background: #D3D3D3">CORREO ELECTRONICO</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.email"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br/>
+                                <!-- Tablas de INFORMACION GENERAL Y VALORES -->
+                                <div class="row text-center justify-content-evenly">
+                                    <div style="width: 49%">
+                                        <table class="table table-bordered border border-2 border-dark">
+                                            <tr>
+                                                <td colspan="2" style="background: #E51066">
+                                                    <strong style="color: white">INFORMACIÓN GENERAL</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 30%">CANAL</td>
+                                                <td>
+                                                    <t t-esc="o.canal"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>LÍENA DE PRODUCTO</td>
+                                                <td>
+                                                    <t t-esc="o.linea_producto"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>PRODUCTO</td>
+                                                <td>
+                                                    <t t-esc="o.producto"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DESCRIPCIÓN DEL PRODUCTO</td>
+                                                <td>
+                                                    <t t-esc="o.descripcion_producto"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>QRN-TID-COTIZACIÓN</td>
+                                                <td>
+                                                    <t t-esc="o.qrn_tid_cotizacion"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>SHIP TO-IPA</td>
+                                                <td>
+                                                    <t t-esc="o.ship_to_ipa"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>FK</td>
+                                                <td>
+                                                    <t t-esc="o.fk"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>ORDEN DE COMPRA - CLIENTE</td>
+                                                <td>
+                                                    <t t-esc="o.orden_compra_cliente"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>RAZÓN SOCIAL - CLIENTE</td>
+                                                <td>
+                                                    <t t-esc="o.razon_social_cliente_id.name"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div style="width: 2%"/>
+                                    <div style="width: 49%">
+                                        <table class="table table-bordered border border-2 border-dark">
+                                            <tr>
+                                                <td colspan="2" style="background: #E51066">
+                                                    <strong style="color: white">VALORES</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 30%">TIPO DE ORDEN</td>
+                                                <td>
+                                                    <t t-esc="o.company_id.name"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>NOMBRE DEL PROYECTO</td>
+                                                <td>NIT - <t t-esc="o.company_id.vat"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>CENTRO DE COSTOS</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.street"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>FECHA ESTIMADA DE ENTREGA</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.city"/>
+,                                                    <t t-esc="o.contacto_factura_id.country_id.name"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>TIEMPO DE PAGO</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.name"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>VALOR OC</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.mobile"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>TIPO DE MONEDA</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.phone"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>TRM</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.email"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>VALOR OC EN PESOS</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.email"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>TIEMPO EN MESES</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.email"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>VALOR CUOTA</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.email"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>VALOR CUOTA EN PESOS</td>
+                                                <td>
+                                                    <t t-esc="o.contacto_factura_id.email"/>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>

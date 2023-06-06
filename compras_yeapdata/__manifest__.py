@@ -27,7 +27,8 @@
         #'security/ir.model.access.csv',
         'views/views.xml',
         'report/custom_report_oc_yeapdata.xml',
-        'report/custom_report_oc_yeapdata_view.xml'
+        'report/custom_report_oc_yeapdata_view.xml',
+        'views/templates.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
