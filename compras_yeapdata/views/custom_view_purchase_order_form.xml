@@ -34,7 +34,7 @@
               <field name="contacto_cliente_id" />
               <field name="telefono" />
               <field name="direccion_envio" />
-              <field name="vertical_mercado" />
+              <field name="vertical_mercado"/>
             </group>
           </page>
           <page name="valores_odservaciones" string="Valores y Observaciones">
@@ -117,25 +117,26 @@
             </group>
           </page>
           <page name="detalle" string="Detalles de Orden de Compra">
-            <group name="detalle_oc" string="DETALLE ORDEN DE COMPRA">
-                <field name="detalle_oc_ids"
-                  widget="section_and_note_one2many"
-                  mode="tree,form">
-                  <tree editable="bottom">
-                    <field name="name" />
-                    <field name="descripcion" />
-                    <field name="qty" />
-                    <field name="precio_unitario" sum="Total"/>
-                  </tree>
-                  <form>
-                    <field name="name" />
-                    <field name="descripcion" />
-                    <field name="qty" />
-                    <field name="precio_unitario" />
-                  </form>
-                </field>
-                <field name="imagen" widget="image"/>
-              </group>
+            <field name="detalle_oc_ids"
+              widget="section_and_note_one2many"
+              mode="tree">
+              <tree editable="bottom">
+                <field name="name" />
+                <field name="descripcion" />
+                <field name="qty" />
+                <field name="precio_unitario"/>
+                <field name="precio_total" sum="Total"/>
+              </tree>
+              <form>
+                <field name="name" />
+                <field name="descripcion" />
+                <field name="qty" />
+                <field name="precio_unitario" />
+              </form>
+            </field>
+            <group name="imagen">
+              <field name="imagenv2" widget="image"/>
+            </group>
           </page>
           <page name="tratamiento_datos" string="Tratamiento de Datos">
             <group name="tratamiendo" string="Tratamiento de datos">

@@ -25,10 +25,10 @@
     # always loaded
     'data': [
         #'security/ir.model.access.csv',
-        'views/views.xml',
+        'views/custom_view_purchase_order_form.xml',
+        'views/custom_view_res_partener_form.xml',
         'report/custom_report_oc_yeapdata.xml',
-        'report/custom_report_oc_yeapdata_view.xml',
-        'views/templates.xml'
+        'report/custom_report_oc_yeapdata_view.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

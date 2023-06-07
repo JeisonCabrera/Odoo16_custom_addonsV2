@@ -8,7 +8,7 @@
         <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
           <group name="padre">
             <group name="padre1">
-              <field name="vertical_mercado"/>
+              <field name="vertical_mercadox"/>
             </group>
             <group name="padre2">
             </group>

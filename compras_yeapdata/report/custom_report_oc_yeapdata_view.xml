@@ -74,7 +74,8 @@
                                             <tr>
                                                 <td colspan="2">
                                                     <t t-esc="o.company_id.city"/>
-,                                                    <t t-esc="o.company_id.street"/>
+,
+                                                    <t t-esc="o.company_id.street"/>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -349,79 +350,194 @@
                                             <tr>
                                                 <td style="width: 30%">TIPO DE ORDEN</td>
                                                 <td>
-                                                    <t t-esc="o.company_id.name"/>
+                                                    <t t-esc="o.tipo_orden"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>NOMBRE DEL PROYECTO</td>
-                                                <td>NIT - <t t-esc="o.company_id.vat"/>
+                                                <td>
+                                                    <t t-esc="o.nombre_proyecto"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>CENTRO DE COSTOS</td>
                                                 <td>
-                                                    <t t-esc="o.contacto_factura_id.street"/>
+                                                    <!-- <t t-esc="o.contacto_factura_id.street"/> -->
+                                                    Por definir
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>FECHA ESTIMADA DE ENTREGA</td>
                                                 <td>
-                                                    <t t-esc="o.contacto_factura_id.city"/>
-,                                                    <t t-esc="o.contacto_factura_id.country_id.name"/>
+                                                    <t t-esc="o.date_planned"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>TIEMPO DE PAGO</td>
                                                 <td>
-                                                    <t t-esc="o.contacto_factura_id.name"/>
+                                                    <t t-esc="o.payment_term_id.name"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>VALOR OC</td>
                                                 <td>
-                                                    <t t-esc="o.contacto_factura_id.mobile"/>
+                                                    <!-- <t t-esc="o.contacto_factura_id.mobile"/> -->
+                                                    Por definir
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>TIPO DE MONEDA</td>
                                                 <td>
-                                                    <t t-esc="o.contacto_factura_id.phone"/>
+                                                    <!-- <t t-esc="o.contacto_factura_id.phone"/> -->
+                                                    Por definir
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>TRM</td>
                                                 <td>
-                                                    <t t-esc="o.contacto_factura_id.email"/>
+                                                    <!-- <t t-esc="o.contacto_factura_id.email"/> -->
+                                                    Por definir
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>VALOR OC EN PESOS</td>
                                                 <td>
-                                                    <t t-esc="o.contacto_factura_id.email"/>
+                                                    <!-- <t t-esc="o.contacto_factura_id.email"/> -->
+                                                    Por definir
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>TIEMPO EN MESES</td>
                                                 <td>
-                                                    <t t-esc="o.contacto_factura_id.email"/>
+                                                    <!-- <t t-esc="o.contacto_factura_id.email"/> -->
+                                                    Por definir
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>VALOR CUOTA</td>
                                                 <td>
-                                                    <t t-esc="o.contacto_factura_id.email"/>
+                                                    <!-- <t t-esc="o.contacto_factura_id.email"/> -->
+                                                    Por definir
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>VALOR CUOTA EN PESOS</td>
                                                 <td>
-                                                    <t t-esc="o.contacto_factura_id.email"/>
+                                                    <!-- <t t-esc="o.contacto_factura_id.email"/> -->
+                                                    Por definir
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>
                                 </div>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <div class="row text-left">
+                                    <table class="table table-bordered border border-2 border-dark">
+                                        <tr>
+                                            <td class="text-center" style="background: #E51066"><strong style="color: white">OBSERVACIONES</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><t t-esc="o.observaciones"/></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <br/>
+                                <div class="row text-left justify-content-evenly">
+                                    <div style="width: 49%">
+                                        <table class="table table-bordered border border-2 border-dark">
+                                            <tr>
+                                                <td style="width: 40%; background: #D3D3D3">
+                                                    <strong>SOLICITADO POR</strong>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.solicitado_por_id.name"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 40%; background: #D3D3D3">
+                                                    <strong>AUTORIZO</strong>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.autorizo_id.name"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div style="width: 2%"/>
+                                    <div style="width: 49%">
+                                        <table class="table table-bordered border border-2 border-dark">
+                                            <tr>
+                                                <td style="width: 40%; background: #D3D3D3">
+                                                    <strong>ELABORADO POR</strong>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.elaborado_por"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div style="margin-top: 150px">
+                                    <table class="table table-bordered border border-2 border-dark">
+                                        <tr>
+                                            <td class="text-center" style="background: #E51066"><strong style="color: white">DETALLE EQUIPOS O ELEMENTOS DE LA ORDEN</strong></td>
+                                        </tr>
+                                    </table>
+                                    <table class="table table-bordered border border-2 border-dark">
+                                        <thead>
+                                            <tr class="text-center" style="background: #E51066">
+                                                <th style="width: 20%"><strong style="color: white">PARTE</strong></th>
+                                                <th style="width: 50%"><strong style="color: white">DESCRIPCIÓN</strong></th>
+                                                <th style="width: 10%"><strong style="color: white">QTY</strong></th>
+                                                <th style="width: 20%"><strong style="color: white">PRECIO UNITARIO</strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="o.detalle_oc_ids" t-as="onetime" class="text-center">
+                                                <td>
+                                                    <span t-field="onetime.name"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="onetime.descripcion"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="onetime.qty"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="onetime.precio_unitario"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row text-left justify-content-evenly">
+                                    <div style="width: 70%"/>
+                                    <div style="width: 30%">
+                                        <table class="table table-bordered border border-2 border-dark">
+                                            <tr>
+                                                <td style="background: #E51066; width: 42%"><strong style="color: white">TOTAL</strong></td>
+                                                <td>POR DEFINIR</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="background: #E51066"><strong style="color: white">IVA 19%</strong></td>
+                                                <td>POR DEFINIR</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="background: #E51066"><strong style="color: white">TOTAL CON IVA</strong></td>
+                                                <td>POR DEFINIR</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <span t-field="o.imagenv2" t-options-widget="&quot;image&quot;"/>
+                                </div>
                             </div>
+                            <div class="oe_structure"/>
                         </div>
                     </t>
                 </t>

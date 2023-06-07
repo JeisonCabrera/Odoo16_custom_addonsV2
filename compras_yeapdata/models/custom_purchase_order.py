@@ -22,7 +22,7 @@ class compras_yeapdata(models.Model):
     contacto_cliente_id = fields.Many2one('res.partner', string='CONTACTO', domain="[('parent_id', '=', razon_social_cliente_id)]")
     telefono = fields.Char(string='TELÉFONO', related='razon_social_cliente_id.phone')
     direccion_envio = fields.Char(string='DIRECCIÓN DE ENVÍO', related='razon_social_cliente_id.street')
-    vertical_mercado = fields.Char(string='VERTICAL DE MERCADO') #CREAR CAMPO EN CONTACTOS PARA RELACIONARLO ACÁ
+    vertical_mercado = fields.Selection(string='VERTICAL DE MERCADO', readonly=True, related='razon_social_cliente_id.vertical_mercadox') #CREAR CAMPO EN CONTACTOS PARA RELACIONARLO ACÁ
 
     #Valores y Observaciones
     tipo_orden = fields.Selection([
@@ -86,7 +86,7 @@ class compras_yeapdata(models.Model):
 
     #Detalles de Orden de compra
     detalle_oc_ids = fields.One2many('detalle.oc', 'clave_id', string=' ')
-    imagen = fields.Image('Imagen', max_width=100, max_height=100)
+    imagenv2 = fields.Binary('Imagen')
     
     #Tratamiento de datos
     tratamiento_datos_id = fields.Many2one('tratamiento.datos', string='TRATAMIENTO DE DATOS')
@@ -96,52 +96,3 @@ class compras_yeapdata(models.Model):
     tiempo_related = fields.Integer('TIEMPO EN MESES', related='tiempo_meses_recurrente')
     centro_costos_ot_related = fields.Char('CENTRO DE COSTOS ONE TIME', related="centro_cotos_onetime")
     centro_costos_rec_related = fields.Char('CENTRO DE COSTOS RECURRENTES', related="centro_cotos_recurrente")
-
-class valores_onetime(models.Model):
-    _name = 'valores.onetime'
-    _description = 'valores.onetime'
-
-    name = fields.Char('Nombre')
-    centro_costos_id = fields.Many2one(comodel_name='centro.costos', string='Centro de Costos')
-    procesos_id = fields.Many2one(comodel_name='procesos', string='Procesos')
-    valor = fields.Float('Valor')
-    clave_id = fields.Many2one('purchase.order', string='Clave')
-
-class valores_recurrentes(models.Model):
-    _name = 'valores.recurrentes'
-    _description = 'valores.recurrentes'
-
-    name = fields.Char('Nombre')
-    centro_costos_id = fields.Many2one(comodel_name='centro.costos', string='Centro de Costos')
-    procesos_id = fields.Many2one(comodel_name='procesos', string='Procesos')
-    valor = fields.Float('Valor')
-    clave_id = fields.Many2one('purchase.order', string='Clave')
-
-class centro_costos(models.Model):
-    _name = 'centro.costos'
-    _description = 'centro.costos'
-
-    name = fields.Char('Centro de Costos')
-
-class procesos(models.Model):
-    _name = 'procesos'
-    _description = 'procesos'
-
-    name = fields.Char('Procesos')
-
-class detalle_oc(models.Model):
-    _name = 'detalle.oc'
-    _description = 'detalle.oc'
-
-    name = fields.Char('Parte')
-    qty = fields.Integer('QTY')
-    precio_unitario = fields.Float('Precio Unitario')
-    descripcion = fields.Text('Descripción')
-    clave_id = fields.Many2one('purchase.order', string='Clave')
-
-class tratamiento_datos(models.Model):
-    _name = 'tratamiento.datos'
-    _description = 'tratamiento.datos'
-
-    name = fields.Char('NOMBRE')
-    condiciones_oc = fields.Html('CONDICIONES GENERALES DE LA ORDEN DE COMPRA')   
