@@ -348,7 +348,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 30%">TIPO DE ORDEN</td>
+                                                <td style="width: 45%">TIPO DE ORDEN</td>
                                                 <td>
                                                     <t t-esc="o.tipo_orden"/>
                                                 </td>
@@ -360,10 +360,15 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>CENTRO DE COSTOS</td>
+                                                <td>CENTRO DE COSTOS ONE TIME</td>
                                                 <td>
-                                                    <!-- <t t-esc="o.contacto_factura_id.street"/> -->
-                                                    Por definir
+                                                    <t t-esc="o.centro_cotos_onetime"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>CENTRO DE COSTOS RECURRENTES</td>
+                                                <td>
+                                                    <t t-esc="o.centro_cotos_recurrente"/>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -379,58 +384,82 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>VALOR OC</td>
+                                                <td>VALOR OC ONE TIME</td>
                                                 <td>
-                                                    <!-- <t t-esc="o.contacto_factura_id.mobile"/> -->
-                                                    Por definir
+                                                    <t t-esc="o.valor_oc_onetime"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>VALOR OC RECURRENTE</td>
+                                                <td>
+                                                    <t t-esc="o.valor_oc_recurrente"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>VALOR TOTAL OC</td>
+                                                <td>
+                                                    <t t-esc="o.valor_total_oc"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>TIPO DE MONEDA</td>
                                                 <td>
-                                                    <!-- <t t-esc="o.contacto_factura_id.phone"/> -->
-                                                    Por definir
+                                                    <t t-if="o.moneda_onetime_id">
+                                                        <t t-esc="o.moneda_onetime_id.name"/>
+                                                    </t>
+                                                    <t t-if="not o.moneda_onetime_id">
+                                                        <t t-esc="o.moneda_recurrente_id.name"/>
+                                                    </t>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>TRM</td>
                                                 <td>
-                                                    <!-- <t t-esc="o.contacto_factura_id.email"/> -->
-                                                    Por definir
+                                                    <t t-if="o.trm_onetime != 1">
+                                                        <t t-esc="o.trm_onetime"/>
+                                                    </t>
+                                                    <t t-if="o.trm_onetime == 1">
+                                                        <t t-esc="o.trm_recurrente"/>
+                                                    </t>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>VALOR OC EN PESOS</td>
                                                 <td>
-                                                    <!-- <t t-esc="o.contacto_factura_id.email"/> -->
-                                                    Por definir
+                                                    <t t-esc="o.valor_total_oc_pesos"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>TIEMPO EN MESES</td>
                                                 <td>
-                                                    <!-- <t t-esc="o.contacto_factura_id.email"/> -->
-                                                    Por definir
+                                                    <t t-esc="o.tiempo_meses_recurrente"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>VALOR CUOTA</td>
                                                 <td>
-                                                    <!-- <t t-esc="o.contacto_factura_id.email"/> -->
-                                                    Por definir
+                                                    <t t-if="o.valor_cuota_recurrente != 0">
+                                                        <t t-esc="o.valor_cuota_recurrente"/>
+                                                    </t>
+                                                    <t t-if="o.valor_cuota_recurrente == 0">
+                                                        <t t-esc="o.valor_oc_onetime"/>
+                                                    </t>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>VALOR CUOTA EN PESOS</td>
                                                 <td>
-                                                    <!-- <t t-esc="o.contacto_factura_id.email"/> -->
-                                                    Por definir
+                                                    <t t-if="o.valor_cuota_pesos_recurrente != 0">
+                                                        <t t-esc="o.valor_cuota_pesos_recurrente"/>
+                                                    </t>
+                                                    <t t-if="o.valor_cuota_pesos_recurrente == 0">
+                                                        <t t-esc="o.valor_oc_pesos_onetime"/>
+                                                    </t>
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>
                                 </div>
-                                <br/>
                                 <br/>
                                 <br/>
                                 <div class="row text-left">
@@ -480,7 +509,7 @@
                                     </div>
                                 </div>
                                 <br/>
-                                <div style="margin-top: 150px">
+                                <div style="margin-top: 100px">
                                     <table class="table table-bordered border border-2 border-dark">
                                         <tr>
                                             <td class="text-center" style="background: #E51066"><strong style="color: white">DETALLE EQUIPOS O ELEMENTOS DE LA ORDEN</strong></td>
@@ -516,25 +545,20 @@
                                 <div class="row text-left justify-content-evenly">
                                     <div style="width: 70%"/>
                                     <div style="width: 30%">
-                                        <table class="table table-bordered border border-2 border-dark">
-                                            <tr>
-                                                <td style="background: #E51066; width: 42%"><strong style="color: white">TOTAL</strong></td>
-                                                <td>POR DEFINIR</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="background: #E51066"><strong style="color: white">IVA 19%</strong></td>
-                                                <td>POR DEFINIR</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="background: #E51066"><strong style="color: white">TOTAL CON IVA</strong></td>
-                                                <td>POR DEFINIR</td>
-                                            </tr>
+                                        <table class="table table-sm table-bordered border border-2 border-dark">
+                                            <t t-set="tax_totals" t-value="o.tax_totals"/>
+                                            <t t-call="account.document_tax_totals"/>
                                         </table>
                                     </div>
                                 </div>
                                 <br/>
                                 <div class="row">
-                                    <span t-field="o.imagenv2" t-options-widget="&quot;image&quot;"/>
+                                    <t t-if="o.imagenv2">
+                                        <span t-field="o.imagenv2" t-options-widget="&quot;image&quot;"/>
+                                    </t>
+                                    <t t-if="not o.imagenv2">
+                                        <p> </p>
+                                    </t>
                                 </div>
                             </div>
                             <div class="oe_structure"/>

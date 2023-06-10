@@ -32,6 +32,7 @@ class compras_yeapdata(models.Model):
     ], string='TIPO DE ORDEN')
     nombre_proyecto = fields.Char(string='NOMBRE DEL PROYECTO')
     fecha_finalizacion_contrato = fields.Date('FECHA DE FINALIZACIÓN DE CONTRATO', index=True, copy=False, readonly=False)
+
     #VALORES ONE TIME
     valore_onetime_ids = fields.One2many('valores.onetime', 'clave_id', string='VALORES ONE TIME')
     centro_cotos_onetime = fields.Char('CENTRO DE COSTOS ONE TIME', index=True, copy=False, readonly=False)
@@ -72,12 +73,6 @@ class compras_yeapdata(models.Model):
         for record in self:
             record.valor_cuota_pesos_recurrente = record.valor_oc_pesos_recurrente / record.tiempo_meses_recurrente
 
-    valor_total_oc_pesos = fields.Float(compute='_compute_valor_total_oc_pesos', string='VALOR TOTAL OC EN PESOS')
-    @api.depends('valor_oc_pesos_onetime', 'valor_oc_pesos_recurrente')
-    def _compute_valor_total_oc_pesos(self):
-        for record in self:
-            record.valor_total_oc_pesos = record.valor_oc_pesos_onetime + record.valor_oc_pesos_recurrente
-
     #OBSERVACIONES
     observaciones = fields.Text('OBSERVACIONES')
     solicitado_por_id = fields.Many2one('hr.employee', string='SOLICITADO POR')
@@ -96,3 +91,15 @@ class compras_yeapdata(models.Model):
     tiempo_related = fields.Integer('TIEMPO EN MESES', related='tiempo_meses_recurrente')
     centro_costos_ot_related = fields.Char('CENTRO DE COSTOS ONE TIME', related="centro_cotos_onetime")
     centro_costos_rec_related = fields.Char('CENTRO DE COSTOS RECURRENTES', related="centro_cotos_recurrente")
+
+    valor_total_oc = fields.Char(compute='_compute_valor_total_oc', string='VALOR TOTAL OC')
+    @api.depends('valor_oc_onetime', 'valor_oc_recurrente')
+    def _compute_valor_total_oc(self):
+        for record in self:
+            record.valor_total_oc = record.valor_oc_onetime + record.valor_oc_recurrente
+
+    valor_total_oc_pesos = fields.Float(compute='_compute_valor_total_oc_pesos', string='VALOR TOTAL OC EN PESOS')
+    @api.depends('valor_oc_pesos_onetime', 'valor_oc_pesos_recurrente')
+    def _compute_valor_total_oc_pesos(self):
+        for record in self:
+            record.valor_total_oc_pesos = record.valor_oc_pesos_onetime + record.valor_oc_pesos_recurrente

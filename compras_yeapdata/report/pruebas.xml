@@ -57,6 +57,22 @@
                                 </div>
                             </div>
                             -->
+                            <!-- Tabla final de totales
+                                <table class="table table-bordered border border-2 border-dark">
+                                    <tr>
+                                        <td style="background: #E51066; width: 42%"><strong style="color: white">TOTAL</strong></td>
+                                        <td><t t-esc="o.valor_total_oc_pesos"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #E51066"><strong style="color: white">IVA 19%</strong></td>
+                                        <td>POR DEFINIR</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #E51066"><strong style="color: white">TOTAL CON IVA</strong></td>
+                                        <td>POR DEFINIR</td>
+                                    </tr>
+                                </table>
+                             -->
                         </div>
                     </t>
                 </t>
