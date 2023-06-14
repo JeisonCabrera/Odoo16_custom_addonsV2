@@ -1,34 +1,32 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "compras_yeapdata",
+    'name': 'Compras Yeapdata',
 
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+    'summary': 'Personaliza las ordenes de compra',
 
-    'description': """
-        Long description of module's purpose
-    """,
+    'description': 'Personalización del modulo de compras de acuerdo a los requerimientos de Yeapdata',
 
-    'author': "My Company",
-    'website': "https://www.yourcompany.com",
+    'author': 'Jeison Cabrera',
+    'website': '',
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.1',
+    # 'category': 'Inventory/Purchase',
+    'version': '1.0',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'purchase', 'contacts', 'hr'],
 
     # always loaded
     'data': [
-        #'security/ir.model.access.csv',
+        'security/purchase_yeapdada_security.xml',
+        'security/ir.model.access.csv',
         'views/custom_view_purchase_order_form.xml',
         'views/custom_view_res_partener_form.xml',
         'report/custom_report_oc_yeapdata.xml',
-        'report/custom_report_oc_yeapdata_view.xml'
+        'report/custom_report_oc_yeapdata_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

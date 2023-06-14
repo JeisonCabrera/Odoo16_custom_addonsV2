@@ -55,4 +55,4 @@ class tratamiento_datos(models.Model):
     _description = 'tratamiento.datos'
 
     name = fields.Char('NOMBRE')
-    condiciones_oc = fields.Html('CONDICIONES GENERALES DE LA ORDEN DE COMPRA')   
+    condiciones_oc = fields.Html('CONDICIONES GENERALES DE LA ORDEN DE COMPRA')

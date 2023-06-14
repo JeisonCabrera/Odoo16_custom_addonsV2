@@ -1,2 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_compras_yeapdata_compras_yeapdata,compras_yeapdata.compras_yeapdata,model_compras_yeapdata_compras_yeapdata,base.group_user,1,1,1,1
+access_valores_onetime,acces_valores_onetime,model_valores_onetime,base.group_user,1,1,1,1
+access_valores_recurrentes,acces_valores_recurrentes,model_valores_recurrentes,base.group_user,1,1,1,1
+access_centro_costos,acces_centro_costos,model_centro_costos,base.group_user,1,1,1,1
+access_procesos,acces_procesos,model_procesos,base.group_user,1,1,1,1
+access_detalle_oc,acces_detalle_oc,model_detalle_oc,base.group_user,1,1,1,1
+access_tratamiento_datos_user,acces_tratamiento_datos_user,model_tratamiento_datos,group_purchase_user,1,0,0,0
+access_tratamiento_datos_admin,acces_tratamiento_datos_admin,model_tratamiento_datos,group_purchase_manager,1,1,1,1
